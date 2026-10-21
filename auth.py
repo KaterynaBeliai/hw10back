@@ -1,6 +1,6 @@
 try:
     from .response import RedirectResponse
-except Exception:  # pragma: no cover
+except Exception:
     from response import RedirectResponse
 
 

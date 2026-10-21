@@ -57,6 +57,15 @@ class App:
     def __init__(self, pages_dir=None):
         self.templater = Templater(pages_dir)
         self.router = Router()
+        self._routes_loaded = False
+
+        try:
+            import routes
+            routes.app = self
+            if not self._routes_loaded:
+                routes.register_routes(self)
+        except Exception:
+            pass
 
     def get(self, path):
         return self._route("GET", path)

@@ -27,7 +27,6 @@ class HTTPServer:
         self.static_dir = static_dir
 
     def _serve_static(self, path):
-        # path begins with /static/
         if ".." in path:
             return HTMLResponse("Not Found", status=404)
 
@@ -61,7 +60,6 @@ class HTTPServer:
                     try:
                         data = b""
 
-                        # read until headers end
                         while b"\r\n\r\n" not in data:
                             chunk = client.recv(4096)
                             if not chunk:
@@ -72,7 +70,6 @@ class HTTPServer:
                         header_text = head.decode("utf-8", errors="replace")
                         header_lines = header_text.split("\r\n")
                         print(f"[DEBUG] Raw request head:\n{header_text}")
-                        # parse headers into dict
                         headers = {}
                         for line in header_lines[1:]:
                             if ":" in line:
@@ -81,7 +78,6 @@ class HTTPServer:
                         print(f"[DEBUG] Parsed headers: {headers}")
 
                         content_length = int(headers.get("content-length", "0"))
-                        # read remaining body bytes if any
                         body_bytes = body
                         content_length_header = headers.get("content-length")
                         body_bytes = b""
@@ -97,7 +93,6 @@ class HTTPServer:
 
                         text = (head + b"\r\n\r\n" + body_bytes).decode("utf-8", errors="replace")
                         request = parse_request(text)
-                        # diagnostic: log parsed request path/method
                         print(f"[DEBUG] Parsed request: method={request.method!r}, path={request.path!r}")
 
                         if request.path.startswith("/static/"):

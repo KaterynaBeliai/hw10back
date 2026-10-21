@@ -13,8 +13,6 @@ def repeat(times):
     return decorator
 
 
-# The decorator closer to def greet runs first; when @uppercase is the outermost wrapper,
-# it receives the list returned by @repeat and calls .upper() on it, which raises AttributeError.
 @uppercase
 @repeat(3)
 def greet_broken(name):

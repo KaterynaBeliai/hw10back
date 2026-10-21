@@ -24,7 +24,6 @@ def parse_query_string(text):
         return {}
 
     def pct_decode(s: str) -> str:
-        # simple percent-decoder, handles %HH and plus -> space
         res = []
         i = 0
         n = len(s)
@@ -38,7 +37,6 @@ def parse_query_string(text):
                     i += 3
                     continue
                 except ValueError:
-                    # if not valid hex, keep literal '%'
                     res.append("%")
                     i += 1
                     continue
@@ -63,13 +61,11 @@ def parse_cookies(text: str):
     if not text:
         return {}
     result = {}
-    # cookies are separated by ';'
     for part in text.split(";"):
         part = part.strip()
         if not part:
             continue
         if "=" not in part:
-            # skip malformed entries
             continue
         k, v = part.split("=", 1)
         result[k.strip()] = v.strip()
@@ -96,7 +92,6 @@ def parse_request(text: str) -> Request:
         name, value = line.split(":", 1)
         headers[name.strip().lower()] = value.strip()
 
-    # parse cookies from headers (Cookie header is optional)
     cookie_header = headers.get("cookie", "")
     cookies = parse_cookies(cookie_header)
 

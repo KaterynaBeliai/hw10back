@@ -8,7 +8,6 @@ class Response:
         self.body = body
         self.status = status
         self.headers = headers or {}
-        # internal list to hold multiple Set-Cookie values
         self._cookies = []
         if content_type is not None:
             self.content_type = content_type
@@ -28,7 +27,6 @@ class Response:
         for k, v in self.headers.items():
             head_lines.append(f"{k}: {v}")
 
-        # include any Set-Cookie headers collected via set_cookie()
         for cookie in getattr(self, "_cookies", []):
             head_lines.append(f"Set-Cookie: {cookie}")
 
@@ -84,9 +82,7 @@ class JSONResponse(Response):
 
 class RedirectResponse(Response):
     def __init__(self, location: str, status: int = 302, headers: dict = None):
-        # empty body
         super().__init__(body="", status=status, headers=headers)
-        # set Location header
         if self.headers is None:
             self.headers = {}
         self.headers.setdefault("Location", location)
