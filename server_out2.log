@@ -1,0 +1,27 @@
+INFO:     127.0.0.1:53513 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53543 - "GET / HTTP/1.1" 200 OK
+open
+close
+INFO:     127.0.0.1:53575 - "GET /items?sort=price HTTP/1.1" 422 Unprocessable Content
+open
+close
+INFO:     127.0.0.1:53606 - "GET /items/abc HTTP/1.1" 422 Unprocessable Content
+open
+INFO:     127.0.0.1:53636 - "GET /items/999 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53668 - "GET /docs HTTP/1.1" 200 OK
+open
+INFO:     127.0.0.1:53700 - "GET /ping HTTP/1.1" 200 OK
+close
+INFO:     127.0.0.1:53699 - "GET /catalogue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53698 - "GET /fine-async HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53819 - "GET /fine-async HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53845 - "GET /ping HTTP/1.1" 200 OK
+open
+close
+INFO:     127.0.0.1:53846 - "GET /catalogue HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53886 - "GET / HTTP/1.1" 200 OK
+open
+INFO:     127.0.0.1:53887 - "GET /items/999 HTTP/1.1" 404 Not Found
+open
+close
+INFO:     127.0.0.1:53888 - "GET /items?sort=price HTTP/1.1" 422 Unprocessable Content

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}School Catalogue{% endblock %}
+
+{% block content %}
+<h1>School Catalogue</h1>
+{% if items %}
+<ul>
+    {% for item in items %}
+    <li><a href="/items/{{ item.id }}">{{ item.title }} ({{ item.year }})</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No items available.</p>
+{% endif %}
+{% endblock %}

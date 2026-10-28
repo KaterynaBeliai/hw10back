@@ -32,7 +32,7 @@ CREATE TABLE courses (
 );
 CREATE INDEX idx_courses_teacher_id ON courses(teacher_id);
 
--- One-to-many: students holds the department_id foreign key.
+
 CREATE TABLE students (
     id serial PRIMARY KEY,
     full_name text NOT NULL,
@@ -50,7 +50,6 @@ CREATE TABLE student_profiles (
     notes text
 );
 
--- Many-to-many: student_courses junction table; course_id is indexed because course-based lookups are common.
 CREATE TABLE student_courses (
     student_id integer NOT NULL REFERENCES students(id) ON DELETE CASCADE,
     course_id integer NOT NULL REFERENCES courses(id) ON DELETE CASCADE,

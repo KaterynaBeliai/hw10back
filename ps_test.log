@@ -1,0 +1,29 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\User\Desktop\hw8back\hw6backend\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\User\Desktop\hw8back\hw6backend
+plugins: anyio-4.15.1
+collecting ... collected 10 items
+
+tests/test_fastapi_api.py::ApiTests::test_catalogue_page_escapes_html PASSED [ 10%]
+tests/test_fastapi_api.py::ApiTests::test_empty_title_is_422 PASSED      [ 20%]
+tests/test_fastapi_api.py::ApiTests::test_get_item_by_id_404 PASSED      [ 30%]
+tests/test_fastapi_api.py::ApiTests::test_get_item_by_id_422 PASSED      [ 40%]
+tests/test_fastapi_api.py::ApiTests::test_items_list_sort_and_limit PASSED [ 50%]
+tests/test_fastapi_api.py::ApiTests::test_limit_validation_422 PASSED    [ 60%]
+tests/test_fastapi_api.py::ApiTests::test_post_with_valid_token_redirects PASSED [ 70%]
+tests/test_fastapi_api.py::ApiTests::test_post_without_token_is_401 PASSED [ 80%]
+tests/test_fastapi_api.py::ApiTests::test_root_returns_catalogue_name PASSED [ 90%]
+tests/test_fastapi_api.py::ApiTests::test_sort_validation_422 PASSED     [100%]
+
+============================== warnings summary ===============================
+venv\Lib\site-packages\starlette\formparsers.py:12
+  C:\Users\User\Desktop\hw8back\hw6backend\venv\Lib\site-packages\starlette\formparsers.py:12: PendingDeprecationWarning: Please use `import python_multipart` instead.
+    import multipart
+
+venv\Lib\site-packages\starlette\testclient.py:40
+  C:\Users\User\Desktop\hw8back\hw6backend\venv\Lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 10 passed, 2 warnings in 0.65s ========================
